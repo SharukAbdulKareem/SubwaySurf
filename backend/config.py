@@ -38,3 +38,5 @@ def get_outlets_data():
     except Exception as e:
         logger.error(f"Error fetching outlets from Supabase: {e}")
         raise
+
+

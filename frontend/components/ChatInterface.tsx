@@ -59,7 +59,7 @@ export default function ChatInterface({ onSearch, loading, searchResult }: ChatI
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 h-[600px] flex flex-col">
       <div className="flex-1 overflow-y-auto mb-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-300">
-        {messages.map((message, index) => (
+        {messages.map((message) => (
           <div
             key={message.timestamp}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}

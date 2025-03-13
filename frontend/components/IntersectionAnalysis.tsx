@@ -99,7 +99,7 @@ export default function IntersectionAnalysis({ outlets }: IntersectionAnalysisPr
             <div>
               <h3 className="font-semibold mb-3">Detailed Breakdown</h3>
               <div className="h-[250px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300">
-                {outletIntersections.map((data, index) => (
+                {outletIntersections.map((data) => (
                   data && (
                     <div 
                       key={data.outlet.address}

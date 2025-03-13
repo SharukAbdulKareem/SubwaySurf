@@ -80,8 +80,8 @@ app = FastAPI(title="Subway Outlets API", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://your-frontend-domain.vercel.app",
-        "http://localhost:3000"  # Keep for local development
+        "https://subway-surf-bviy66cdz-sharuks-projects-142b8bc5.vercel.app",
+        "http://localhost:3000"  # for local development
     ],
     allow_credentials=True,
     allow_methods=["*"],

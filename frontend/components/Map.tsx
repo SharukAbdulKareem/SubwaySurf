@@ -3,8 +3,13 @@ import 'leaflet/dist/leaflet.css';
 import { Outlet } from '@/types';
 import L from 'leaflet';
 
-// Fix for default marker icon
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+// Define the type for Icon prototype
+interface IconDefault extends L.Icon.Default {
+  _getIconUrl?: string;
+}
+
+// Fix for default marker icon with proper typing
+delete (L.Icon.Default.prototype as IconDefault)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',

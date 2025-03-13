@@ -12,6 +12,8 @@ const Map = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-[600px] w-full bg-gray-100 animate-pulse rounded-lg" />
 });
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
+
 export default function Home() {
   const [outlets, setOutlets] = useState<Outlet[]>([]);
   const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);
@@ -26,11 +28,10 @@ export default function Home() {
   const fetchOutlets = async () => {
     setIsLoading(true);
     try {
-      // Add timeout to the fetch request
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      const response = await fetch('http://localhost:8001/outlets/', {
+      const response = await fetch(`${API_URL}/outlets/`, {
         signal: controller.signal,
         headers: {
           'Accept': 'application/json',
@@ -57,12 +58,12 @@ export default function Home() {
       console.error('Error fetching outlets:', err);
       if (err instanceof Error) {
         if (err.name === 'AbortError') {
-          setError('Request timed out. Please check if the backend server is running on port 8001.');
+          setError('Request timed out. Please try again later.');
         } else {
           setError(`Failed to load outlets: ${err.message}`);
         }
       } else {
-        setError('Failed to load outlets. Please make sure the backend server is running on port 8001.');
+        setError('Failed to load outlets. Please try again later.');
       }
     } finally {
       setIsLoading(false);
@@ -73,11 +74,11 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:8001/query/?q=${encodeURIComponent(query)}`);
+      const response = await fetch(`${API_URL}/query/?q=${encodeURIComponent(query)}`);
       const data = await response.json();
       setSearchResult(data);
     } catch (err) {
-      setError('Search failed');
+      setError('Search failed. Please try again later.');
       console.error(err);
     } finally {
       setLoading(false);

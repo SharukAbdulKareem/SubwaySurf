@@ -5,7 +5,7 @@
   "framework": "nextjs",
   "outputDirectory": ".next",
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://mindhive-fast-api.herokuapp.com"
+    "NEXT_PUBLIC_API_URL": "https://fastapi-00sn.onrender.com"
   }
 } 
 

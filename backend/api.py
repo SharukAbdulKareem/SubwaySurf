@@ -15,7 +15,6 @@ from langchain.chains import ConversationChain
 
 # Set up logging
 logging.basicConfig(
-    filename=Config.LOG_FILE,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -80,8 +79,9 @@ app = FastAPI(title="Subway Outlets API", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://subway-surf.vercel.app",  # Your Vercel domain
-        "http://localhost:3000"  # for local development
+        "https://subway-surf-2.vercel.app",  # Your main Vercel URL
+        "https://subway-surf-2-q70wpbzcx-sharuks-projects-142b8bc5.vercel.app",  # Your preview URL
+        "http://localhost:3000" # for local development
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -159,9 +159,9 @@ async def query_outlets(q: str):
                     relevant_outlets.append(outlet_response.data[0])
                     seen_addresses.add(address)
 
-        context = "\n".join([
-            f"Name: {o['name']}, Address: {o['address']}, Operating Hours: {o['operating_hours']}, Waze Link: {o['waze_link']}"
-            for o in relevant_outlets
+        context = "\n".join([ 
+            f"Name: {o['name']}, Address: {o['address']}, Operating Hours: {o['operating_hours']}, Waze Link: {o['waze_link']}" 
+            for o in relevant_outlets 
         ])
 
         # Create prompt with context and conversation history

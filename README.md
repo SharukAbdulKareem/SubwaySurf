@@ -4,6 +4,9 @@
 
 Subway Surf is a web application designed to help users find Subway restaurant outlets in Kuala Lumpur. The application is built using Next.js for the frontend and FastAPI for the backend, leveraging various libraries and services to provide a seamless user experience.
 
+![App Screenshot](https://github.com/SharukAbdulKareem/SubwaySurf/blob/ee609ab76a526823a8be358b73745b185e2c8504/mdhv%201.jpg)
+![App Screenshot](https://github.com/SharukAbdulKareem/SubwaySurf/blob/ee609ab76a526823a8be358b73745b185e2c8504/mdhv%202.jpg)
+
 
 ## Table of Contents
 
